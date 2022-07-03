@@ -1,0 +1,4 @@
+Tested Both the files on hardware.
+
+
+Not made dual threaded implementation folder as dual threaded files were always run on Cortos. Without cortos, it resulted into memory issues.

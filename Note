@@ -1,0 +1,4 @@
+The c_simulator files have been tested on hardware. We have the data for 48*48 image with 4*4 kernel. Our all the codes and programs have been written for 4*4 kernels. The Image size can be varied.
+
+The cortos files could not be tested on hardware due to some issues. Due to that multi threaded implementation check on hardware is pending. Moreover we are also waiting for the bit file of 1x2x64 for the prcoessor from sir's end. 
+We request you to kindly see and share the steps with us on how to run cortos files/ dual threaded cortos files in hardware.

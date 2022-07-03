@@ -1,0 +1,1 @@
+1. correct :	g0,	id = 0, 	expected = 0x0,  		actual = 0x0 (mask=0xffffffff) core,thread=0,0

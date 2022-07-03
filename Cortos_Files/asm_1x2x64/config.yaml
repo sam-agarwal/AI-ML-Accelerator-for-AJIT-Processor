@@ -1,0 +1,75 @@
+
+Hardware:
+  Processor:
+    # Required: Number of cores and threads per core.
+    Cores: 1
+    ThreadsPerCore: 2
+    ISA: 64 # 32/64 bit (Default: 32)
+
+  Memory:
+    MaxPhysicalAddrBitWidth: 36
+    Flash:
+      StartAddr: 0x0  # physical address
+      SizeInMegaBytes: 16
+      Permissions: RXC  # (Read,Write,eXecute,Cacheable)
+    RAM:
+      StartAddr: 0x40000000
+      SizeInMegaBytes: 128
+      Permissions: RWXC
+    # NCRAM:
+    #   StartAddr: 0x8000000
+    #   SizeInMegaBytes: 16
+    #   Permissions: RW
+    MMIO: # Memory Mapped IO
+      StartAddr: 0xFFFF0000  # physical address
+      EndAddr:   0xFFFFFFFF
+      Permissions: RW
+
+  Devices:
+    - Name: Timer
+      MemoryRegion:
+        StartAddr: 0xFFFF3100 # physical address (in MMIO)
+        SizeInBytes: 256 # 16x16
+        Permissions: RW
+      NamedRegisters:
+        Control: 0xFFFF3100
+    - Name: InterruptController
+      MemoryRegion:
+        StartAddr: 0xFFFF3000
+        SizeInBytes: 32
+        Permissions: RW
+      NamedRegisters:
+        Control: 0xFFFF3000
+    - Name: Serial
+      MemoryRegion:
+        StartAddr: 0xFFFF3200
+        SizeInBytes: 64
+        Permissions: RW
+      NamedRegisters:
+        Control: 0xFFFF3200
+        TX: 0xFFFF3204
+        RX: 0xFFFF3208
+    - Name: ScratchArea
+      MemoryRegion:
+        StartAddr: 0xFFFF2C00
+        SizeInBytes: 1024
+        Permissions: RW
+
+Software:
+  BuildAndExecute:
+    LogLevel: DEBUG
+    OptimizationLevel: 3
+    EnableSerial: Yes
+    Debug: No
+    FirstDebugPort: 8888
+    BuildArgs: "-D CORTOS_ENV"
+
+  ProgramThreads:
+    - CortosInitCalls:
+        - ajit_entry_func_001
+      StackSize:
+        SizeInKiloBytes: 8
+    - CortosInitCalls:
+        - ajit_entry_func_010
+      StackSize:
+        SizeInKiloBytes: 8
