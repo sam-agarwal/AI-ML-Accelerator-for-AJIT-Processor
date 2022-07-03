@@ -1,5 +1,9 @@
 No Cortos files have been tested on hardware. 
 On software, I have tested the files and they are working correctly.
-c_1x1x32- done
+c_1x1x32- working on simulator
+c_1x2x32-
+asm_1x1x64-
+asm_1x2x64 is not to be tested right now in hardware as neither we have the bit file nor we have updated it with the latest version of our assembly code. We will do it soon.
+
 
 
