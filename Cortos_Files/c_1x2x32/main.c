@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include <cortos.h>
-#include <maths.h>
+#include <math.h>
 
 /* PFP */
 void print_matrix(int *m, int x, int y);
@@ -63,7 +63,7 @@ uint32_t start_time = cortos_get_clock_time();
 	cortos_printf("main: start_time=%d, end_time=%d, elapsed=%d\n", 
 				start_time, end_time, end_time-start_time);
 
-  //print_matrix(res, (n - kernel_size + 1), (n - kernel_size + 1));
+  print_matrix(res, (n - kernel_size + 1), (n - kernel_size + 1));
   cortos_exit(b); // safely exit
 }
 
