@@ -1,7 +1,5 @@
 #include <stdlib.h>
 #include <stdint.h>
-#include "ajit_access_routines.h"
-#include "core_portme.h"
 #include <cortos.h>
 
 int 	__attribute__((aligned(8))) res[2025];		//output of the convolution (32 bit precision)
@@ -12,13 +10,13 @@ uint8_t __attribute__((aligned(8))) kernel[16] = 	 {0,0,0,1,
 							  0,0,0,0};
 uint8_t __attribute__((aligned(8))) kernel_ret[16]={0};
 
-void enable_serial()
+/*void enable_serial()
 {
 	// enable the serial device.
 	__ajit_write_serial_control_register__ ( TX_ENABLE | RX_ENABLE | RX_INTR_ENABLE );
 	cortos_printf("enabled serial.\n"); 
 }
-
+*/
 void main () 
 {
 	
@@ -46,10 +44,10 @@ void main ()
 
 	//uint32_t start_time = ajit_barebones_clock();
 
-	//conv(img, 16, n, kernel, res);		//conv asm subroutine written in conv.s
+	conv(img, 16, n, kernel, res);		//conv asm subroutine written in conv.s
 
 	//print_matrix_u8(img, n, n);
-	//print_matrix(res, n-kernel_size+1, n-kernel_size+1);
+	print_matrix(res, n-kernel_size+1, n-kernel_size+1);
 
 	//uint32_t end_time   = ajit_barebones_clock();
 	//ee_printf("main: start_time=%d, end_time=%d, elapsed=%d\n", 
